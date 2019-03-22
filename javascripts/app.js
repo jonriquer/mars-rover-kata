@@ -3,6 +3,7 @@ var rover = {
   direction: "N", 
   x: 0,
   y: 0,
+  travelLog: [],
 }
 // ======================
 
@@ -47,17 +48,21 @@ function moveForward(rover) {
     break;
   }
   console.log(rover);
+  rover.travelLog.push(rover.x);
+  rover.travelLog.push(rover.y);
+  
 }
 
 function commands(commandList) {
-  for (i=1; i <= commandList.length; i++) {
-    switch (commandList) {
-    case "f": moveForward(rover);
-    break;
-    case "r": turnRight(rover);
-    break;
-    case "l": turnLeft(rover);
-    break;
+  for (i=0; i < commandList.length; i++) {
+    switch (commandList.charAt(i)) {
+      case "f": moveForward(rover);
+      break;
+      case "r": turnRight(rover);
+      break;
+      case "l": turnLeft(rover);
+      break;
+      default: console.log("Not a Command!");
     }
   }
 }

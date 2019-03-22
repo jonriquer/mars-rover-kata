@@ -48,3 +48,16 @@ function moveForward(rover) {
   }
   console.log(rover);
 }
+
+function commands(commandList) {
+  for (i=1; i <= commandList.length; i++) {
+    switch (commandList) {
+    case "f": moveForward(rover);
+    break;
+    case "r": turnRight(rover);
+    break;
+    case "l": turnLeft(rover);
+    break;
+    }
+  }
+}

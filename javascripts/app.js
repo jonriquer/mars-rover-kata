@@ -35,26 +35,16 @@ function turnRight(rover){
   console.log(rover.direction);
 }
 
-function moveForward(rover){
-  switch (rover) {
-    case "N": rover.x = 0;
+function moveForward(rover) {
+  switch (rover.direction) {
+    case "N": rover.y -= 1;
     break;
-    case "E": rover.x = +1;
+    case "E": rover.x += 1;
     break;
-    case "S": rover.x = 0;
+    case "S": rover.y += 1;
     break;
-    case "W": rover.x = -1;
-    break;
-  }
-  switch (rover) {
-    case "N": rover.y = -1;
-    break;
-    case "E": rover.y = 0;
-    break;
-    case "S": rover.y = 1;
-    break;
-    case "W": rover.y = 0;
+    case "W": rover.x += 1;
     break;
   }
-  console.log(rover.x, rover.y, rover.direction);
+  console.log(rover);
 }

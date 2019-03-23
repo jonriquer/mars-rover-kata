@@ -37,6 +37,7 @@ function turnRight(rover){
 }
 
 function moveForward(rover) {
+  if (rover.x < 10 && rover.y < 10) { //10x10 Boundraries
   switch (rover.direction) {
     case "N": rover.y -= 1;
     break;
@@ -44,25 +45,50 @@ function moveForward(rover) {
     break;
     case "S": rover.y += 1;
     break;
+    case "W": rover.x -= 1;
+    break;
+    }
+    rover.travelLog.push(rover.x);
+    rover.travelLog.push(rover.y);
+    console.log(rover);
+  }
+  else console.log("Cant go Offgrid! Please BACKUP!");
+}
+
+function moveBackward(rover) {
+  switch (rover.direction) {
+    case "N": rover.y += 1;
+    break;
+    case "E": rover.x -= 1;
+    break;
+    case "S": rover.y -= 1;
+    break;
     case "W": rover.x += 1;
     break;
-  }
-  console.log(rover);
-  rover.travelLog.push(rover.x);
-  rover.travelLog.push(rover.y);
-  
+    }
+    rover.travelLog.push(rover.x);
+    rover.travelLog.push(rover.y);
+    console.log(rover);
 }
 
 function commands(commandList) {
+  // Input Validation 
   for (i=0; i < commandList.length; i++) {
-    switch (commandList.charAt(i)) {
-      case "f": moveForward(rover);
-      break;
-      case "r": turnRight(rover);
-      break;
-      case "l": turnLeft(rover);
-      break;
-      default: console.log("Not a Command!");
-    }
+    if (commandList.charAt(i) != "f" && "r" && "l") 
+      var validInputs = false; 
+    else validInputs = true; 
   }
+  // Main Function Execution
+  if (validInputs == true) 
+    for (i=0; i < commandList.length; i++) {
+      switch (commandList.charAt(i)) {
+        case "f": moveForward(rover);
+        break;
+        case "r": turnRight(rover);
+        break;
+        case "l": turnLeft(rover);
+        break;
+      }
+    }
+  else console.log("INVALID!")
 }
